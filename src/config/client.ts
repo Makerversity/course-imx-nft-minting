@@ -11,11 +11,9 @@ export default {
     gasPrice: getEnv('GAS_PRICE'),
   },
   // Bulk minting
-  privateKey1: getEnv('PRIVATE_KEY1'),
   tokenId: getEnv('TOKEN_ID'),
-  tokenAddress: getEnv('TOKEN_ADDRESS'),
   // Onboarding
   ownerAccountPrivateKey: getEnv('OWNER_ACCOUNT_PRIVATE_KEY'),
   collectionContractAddress: getEnv('COLLECTION_CONTRACT_ADDRESS'),
-  collectionProjectId: getEnv('COLLECTION_PROJECT_ID'),
+  collectionProjectId: getEnv('PROJECT_ID'),
 };

@@ -12,7 +12,7 @@
     "simple-deploy-dev": "npx hardhat run deploy/asset.ts --network dev",
     "simple-deploy-sandbox": "npx hardhat run deploy/asset.ts --network sandbox",
     "generate-random-key": "ts-node scripts/generateRandomKey.ts",
-    "mint": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/5-mint.ts",
+    "mint": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/5-mint.ts",
     "onboarding:user-registration": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/1-user-registration.ts",
     "onboarding:create-project": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/2-create-project.ts",
     "onboarding:create-collection": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/3-create-collection.ts",

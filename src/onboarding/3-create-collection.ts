@@ -17,7 +17,7 @@ const component = '[IMX-CREATE-COLLECTION]';
   const collectionContractAddress = requireEnvironmentVariable(
     'COLLECTION_CONTRACT_ADDRESS',
   );
-  const projectId = requireEnvironmentVariable('COLLECTION_PROJECT_ID');
+  const projectId = requireEnvironmentVariable('PROJECT_ID');
 
   const wallet = new Wallet(privateKey);
   const signer = wallet.connect(provider);

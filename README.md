@@ -48,13 +48,13 @@ Add some Goerli Eth to your account using a faucet. You will need this to deploy
 npm run simple-deploy-sandbox
 ```
 
-## 8. Update env with contract address
-Copy the `Deployed Contract Address` contract address from the console and add it to the `.env`
-- `COLLECTION_CONTRACT_ADDRESS`
-
 # Setup your Smart contract in IMX
 
-## 1. Register as a user with Immutable X
+## 1. Update env with contract address
+Copy the `Deployed Contract Address` contract address from the console from the previous step you completed and add it to the `.env`
+- `COLLECTION_CONTRACT_ADDRESS`
+
+## 2. Register as a user with Immutable X
 
 ImmutableX provide an authentication service to protect your administrative level assets from being accessed or updated by someone else. This is done using a simliar technique as described [here](https://link.medium.com/CVTcj7YfQkb).
 
@@ -66,7 +66,7 @@ Run the following script:
 npm run onboarding:user-registration
 ```
 
-## 2. Create project
+## 3. Create project
 
 Update the values in file `2-create-project.ts` with the values of the project you want to create.
 
@@ -82,7 +82,7 @@ npm run onboarding:create-project
 
 On completion, the script will log the ID of the created project. Save this ID for use in the next step.
 
-## 3. Add a collection
+## 4. Add a collection
 
 A collection refers to the smart contract that you have deployed. Minted assets belong to a collection. In order to mint assets on L2
 you must first register your collection (smart contract) with ImmutableX.

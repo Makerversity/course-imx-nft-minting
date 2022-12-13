@@ -29,7 +29,7 @@ Add them to the `.env`
 - `ETHERSCAN_API_KEY`
     - which can be obtained from [your Etherscan account.](https://etherscan.io/myapikey)
 - `ALCHEMY_API_KEY`
-    - which you will need to make an account with [Alchemy.](https://www.alchemy.com/)
+    - which you will need to make an account with [Alchemy.](https://dashboard.alchemy.com/)
 
 5. Add some Goerli Eth to your account using a faucet. You will need this to deploy the smart contract. [You can use this one](https://goerlifaucet.com/)
 

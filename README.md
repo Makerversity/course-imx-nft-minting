@@ -7,17 +7,18 @@ This document will get you up and running with a ERC-721 asset contract on IMX. 
 
 # Deploy your smart contract
 
-1. Install the dependancies 
+## 1. Install the dependancies 
 ```sh
 npm install
 ``` 
 
-2. Make a copy of the `.env.example` file and rename the file to `.env`.
+## 2. Copy env file
+Make a copy of the `.env.example` file and rename the file to `.env`.
 ```sh
 cp .env.example .env
 ```
-
-3. Generate a new `address` and `private key`
+## 3. Generate new address
+Generate a new `address` and `private key`
 ```sh
 npm run generate-random-key
 ```
@@ -25,25 +26,30 @@ Add them to the `.env`
 - `CONTRACT_OWNER_ADDRESS`
 - `OWNER_ACCOUNT_PRIVATE_KEY`
 
-4. Go to Alchemy and Etherscan and copy your API keys to the `.env` file.
+## 4. Setup provider API keys
+Go to Alchemy and Etherscan and copy your API keys to the `.env` file.
 - `ETHERSCAN_API_KEY`
     - which can be obtained from [your Etherscan account.](https://etherscan.io/myapikey)
 - `ALCHEMY_API_KEY`
     - which you will need to make an account with [Alchemy.](https://dashboard.alchemy.com/)
 
-5. Add some Goerli Eth to your account using a faucet. You will need this to deploy the smart contract. [You can use this one](https://goerlifaucet.com/)
+## 5. Get some Goerli Eth
+Add some Goerli Eth to your account using a faucet. You will need this to deploy the smart contract. [You can use this one](https://goerlifaucet.com/)
 
-6. [Optional] Update the name and the symbol of the contract before you deploy. 
+## 6. Update contract details
+[Optional] Update the name and the symbol of the contract in the `.env` file before you deploy. 
 
 - `CONTRACT_NAME`
 - `CONTRACT_SYMBOL`
 
-7. Deploy your contract.
+## 7. Deploy the contract
+
 ```sh
 npm run simple-deploy-sandbox
 ```
 
-8. Copy the `Deployed Contract Address` contract address and add it to the `.env`
+## 8. Update env with contract address
+Copy the `Deployed Contract Address` contract address from the console and add it to the `.env`
 - `COLLECTION_CONTRACT_ADDRESS`
 
 # Setup your Smart contract in IMX

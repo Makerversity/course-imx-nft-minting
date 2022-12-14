@@ -21,7 +21,7 @@ cp .env.example .env
 In order to complete this tutororial you will need a valid Ethereum account that consists of an `address` and `private key`. If you are not comfortable with using one of your existing accounts you can easily create one with the command below.
 
 ```sh
-npm run generate-random-key
+npm run generate-new-eth-account
 ```
 Add them to the `.env`
 - `CONTRACT_OWNER_ADDRESS`
@@ -52,7 +52,7 @@ Note: In order to receive Goerli Eth from this faucet you will need to login to 
 ## 7. Deploy the contract
 
 ```sh
-npm run simple-deploy-sandbox
+npm run deploy-contract
 ```
 
 # Setup your Smart contract in IMX
@@ -70,7 +70,7 @@ In order to use services like creating a project or collection, you will first n
 Run the following script:
 
 ```sh
-npm run onboarding:user-registration
+npm run user-registration
 ```
 
 ## 3. Create project
@@ -84,7 +84,7 @@ Update the values in file `2-create-project.ts` with the values of the project y
 Once updated, run the following script to create your project:
 
 ```sh
-npm run onboarding:create-project
+npm run create-project
 ```
 
 On completion, the script will log the ID of the created project. Save this ID for use in the next step.
@@ -101,7 +101,7 @@ Once updated, run the following script to create your collection:
 _Requires environment variables `OWNER_ACCOUNT_PRIVATE_KEY`, `PROJECT_ID` and `COLLECTION_CONTRACT_ADDRESS` to be set._
 
 ```sh
-npm run onboarding:create-collection
+npm run create-collection
 ```
 If you see a `replacement transaction underpriced` error message when trying to run `create-collection` please try again in 5 minutes.
 

@@ -13,13 +13,9 @@ dotenv.config();
 module.exports = {
   solidity: "0.8.4",
   networks: {
-    dev: {
+    goerli: {
       url: `https://eth-goerli.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
-      accounts: [`0x${process.env.OWNER_ACCOUNT_PRIVATE_KEY}`],
-    },
-    sandbox: {
-      url: `https://eth-goerli.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
-      accounts: [`0x${process.env.OWNER_ACCOUNT_PRIVATE_KEY}`],
+      accounts: [`${process.env.OWNER_ACCOUNT_PRIVATE_KEY}`],
     },
   },
   typechain: {

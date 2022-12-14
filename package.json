@@ -9,14 +9,13 @@
   "scripts": {
     "compile": "npx hardhat compile",
     "test": "npx hardhat test",
-    "simple-deploy-dev": "npx hardhat run deploy/asset.ts --network dev",
-    "simple-deploy-sandbox": "npx hardhat run deploy/asset.ts --network sandbox",
-    "generate-random-key": "ts-node scripts/generateRandomKey.ts",
-    "mint": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/5-mint.ts",
-    "onboarding:user-registration": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/1-user-registration.ts",
-    "onboarding:create-project": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/2-create-project.ts",
-    "onboarding:create-collection": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/3-create-collection.ts",
-    "onboarding:add-metadata-schema": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/4-add-metadata-schema.ts"
+    "generate-new-eth-account": "ts-node scripts/generateRandomKey.ts",
+    "deploy-contract": "npx hardhat run deploy/asset.ts --network goerli",
+    "user-registration": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/1-user-registration.ts",
+    "create-project": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/2-create-project.ts",
+    "create-collection": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/3-create-collection.ts",
+    "add-metadata-schema": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/4-add-metadata-schema.ts",
+    "mint": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/5-mint.ts"
   },
   "dependencies": {
     "@nomiclabs/hardhat-etherscan": "^2.1.4",

@@ -6,7 +6,7 @@ async function main() {
     const address = '0xA0bF861D971a31bCD602BD8938C831EA29452078';
     const tokenId = 1;
     const mintingBlob = getMintingBlob(tokenId, 'test');
-    const owner = getEnv("CONTRACT_OWNER_ADDRESS");
+    const owner = getEnv("OWNER_ACCOUNT_ADDRESS");
 
     if (!hardhatArguments.network) {
         throw new Error("please pass --network");

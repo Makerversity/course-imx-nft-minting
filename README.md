@@ -17,8 +17,9 @@ Make a copy of the `.env.example` file and rename the file to `.env`.
 ```sh
 cp .env.example .env
 ```
-## 3. Generate new address
-Generate a new `address` and `private key`
+## 3. Setup your Ethereum account
+In order to complete this tutororial you will need a valid Ethereum account that consists of an `address` and `private key`. If you are not comfortable with using one of your existing accounts you can easily create one with the command below.
+
 ```sh
 npm run generate-random-key
 ```
@@ -33,14 +34,20 @@ Go to Alchemy and Etherscan and copy your API keys to the `.env` file.
 - `ALCHEMY_API_KEY`
     - which you will need to make an account with [Alchemy.](https://dashboard.alchemy.com/)
 
-## 5. Get some Goerli Eth
-Add some Goerli Eth to your account using a faucet. You will need this to deploy the smart contract. [You can use this one](https://goerlifaucet.com/)
 
-## 6. Update contract details
+## 5. Update contract details
 [Optional] Update the name and the symbol of the contract in the `.env` file before you deploy. 
 
 - `CONTRACT_NAME`
 - `CONTRACT_SYMBOL`
+
+
+## 6. Get some Goerli Eth
+To deploy your smart contract to the Goerli testnet you will need to add some Goerli Eth to your account. You can do this using a faucet that has been setup by Alchemy: 
+
+[https://goerlifaucet.com/](https://goerlifaucet.com/). 
+
+Note: In order to receive Goerli Eth from this faucet you will need to login to the Alchemy account that you created in the previous step.
 
 ## 7. Deploy the contract
 
@@ -52,7 +59,7 @@ npm run simple-deploy-sandbox
 
 ## 1. Update env with contract address
 Copy the `Deployed Contract Address` contract address from the console from the previous step you completed and add it to the `.env`
-- `COLLECTION_CONTRACT_ADDRESS`
+- `CONTRACT_ADDRESS`
 
 ## 2. Register as a user with Immutable X
 
@@ -113,6 +120,19 @@ npm run mint -- -w <TO_WALLET_ADDRESS>
 ---
 
 
+# Common Errors
+```sh
+Error: insufficient funds for intrinsic transaction cost [ See: https://links.ethers.org/v5-errors-INSUFFICIENT_FUNDS ] (error={"name":"ProviderError","code":-32000,"_isProviderError":true}, 
+...
+ {
+  reason: 'insufficient funds for intrinsic transaction cost',
+  code: 'INSUFFICIENT_FUNDS',
+  error: ProviderError: insufficient funds for gas * price + value
+    ...
+  method: 'sendTransaction',
+  transaction: undefined
+}
+```
 
 
 # Immutable X Contracts
@@ -159,7 +179,7 @@ Immutable X is the only NFT scaling protocol that supports minting assets on L2,
 
 In the test environment, deploying an ERC721 contract which is compatible with Immutable X is extremely easy. First, update the `.env` file, setting:
 
-- `CONTRACT_OWNER_ADDRESS`
+- `OWNER_ACCOUNT_ADDRESS`
 - `CONTRACT_NAME`
 - `CONTRACT_SYMBOL`
 - `ETHERSCAN_API_KEY`

@@ -46,7 +46,6 @@ const component = '[IMX-USER-REGISTRATION]';
   } else {
     log.info(component, 'User has been created', user.address);
   }
-  console.log(JSON.stringify({ newUser, existingUser }, null, 2));
 })().catch(e => {
   log.error(component, e);
   process.exit(1);

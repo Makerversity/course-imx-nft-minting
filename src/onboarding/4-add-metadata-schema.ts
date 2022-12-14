@@ -19,7 +19,7 @@ const component = '[IMX-ADD-COLLECTION-METADATA-SCHEMA]';
 (async (): Promise<void> => {
   const privateKey = requireEnvironmentVariable('OWNER_ACCOUNT_PRIVATE_KEY');
   const collectionContractAddress = requireEnvironmentVariable(
-    'COLLECTION_CONTRACT_ADDRESS',
+    'CONTRACT_ADDRESS',
   );
 
   const wallet = new Wallet(privateKey);

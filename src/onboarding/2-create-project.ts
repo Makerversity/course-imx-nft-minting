@@ -42,6 +42,8 @@ const component = '[IMX-CREATE-PROJECT]';
   }
 
   log.info(component, `Created project with ID: ${project.id}`);
+  console.log("\nUpdate your .env with the following value:");
+  console.log(`PROJECT_ID=${project.id}\n`);
 })().catch(e => {
   log.error(component, e);
   process.exit(1);

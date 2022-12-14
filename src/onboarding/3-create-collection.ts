@@ -2,7 +2,7 @@ import { AlchemyProvider } from '@ethersproject/providers';
 import { Wallet } from '@ethersproject/wallet';
 import { ImLogger, WinstonLogger } from '@imtbl/imlogging';
 import { CreateCollectionParams, ImmutableXClient } from '@imtbl/imx-sdk';
-import { requireEnvironmentVariable } from 'libs/utils';
+import { getEnv, requireEnvironmentVariable } from 'libs/utils';
 
 import env from '../config/client';
 import { loggerConfig } from '../config/logging';
@@ -14,14 +14,19 @@ const component = '[IMX-CREATE-COLLECTION]';
 
 (async (): Promise<void> => {
   const privateKey = requireEnvironmentVariable('OWNER_ACCOUNT_PRIVATE_KEY');
+  console.log(privateKey)
   const collectionContractAddress = requireEnvironmentVariable(
-    'COLLECTION_CONTRACT_ADDRESS',
+    'CONTRACT_ADDRESS',
   );
   const projectId = requireEnvironmentVariable('PROJECT_ID');
 
   const wallet = new Wallet(privateKey);
+  console.log(wallet.address)
+  console.log(await wallet.getAddress())
   const signer = wallet.connect(provider);
   const ownerPublicKey = wallet.publicKey;
+
+  console.log('wallet.publicKey', wallet.publicKey)
 
   const user = await ImmutableXClient.build({
     ...env.client,
@@ -31,17 +36,14 @@ const component = '[IMX-CREATE-COLLECTION]';
 
   log.info(component, 'Creating collection...', collectionContractAddress);
 
-  /**
-   * Edit your values here
-   */
   const params: CreateCollectionParams = {
-    name: 'ENTER_COLLECTION_NAME',
-    // description: 'ENTER_COLLECTION_DESCRIPTION (OPTIONAL)',
+    name: getEnv('COLLECTION_NAME'),
+    description: getEnv('COLLECTION_DESCRIPTION'),
+    icon_url: getEnv('COLLECTION_ICON_URL'),
+    collection_image_url: getEnv('COLLECTION_IMAGE_URL'),
     contract_address: collectionContractAddress,
     owner_public_key: ownerPublicKey,
-    // icon_url: '',
     // metadata_api_url: '',
-    // collection_image_url: '',
     project_id: parseInt(projectId, 10),
   };
 
@@ -52,7 +54,7 @@ const component = '[IMX-CREATE-COLLECTION]';
     throw new Error(JSON.stringify(error, null, 2));
   }
 
-  log.info(component, 'Created collection');
+  log.info(component, 'Created collection\n');
   console.log(JSON.stringify(collection, null, 2));
 })().catch(e => {
   log.error(component, e);

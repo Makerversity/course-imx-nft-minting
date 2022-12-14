@@ -14,6 +14,6 @@ export default {
   tokenId: getEnv('TOKEN_ID'),
   // Onboarding
   ownerAccountPrivateKey: getEnv('OWNER_ACCOUNT_PRIVATE_KEY'),
-  collectionContractAddress: getEnv('COLLECTION_CONTRACT_ADDRESS'),
+  collectionContractAddress: getEnv('CONTRACT_ADDRESS'),
   collectionProjectId: getEnv('PROJECT_ID'),
 };

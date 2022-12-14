@@ -3,8 +3,8 @@ import Wallet from 'ethereumjs-wallet';
 const wallet = Wallet.generate();
 
 console.log(`
-  [ MAKE SURE TO SECURELY STORE THE PRIVATE KEY!! ]
+  Update the following values in the .env file
 
-  Private Key:  ${wallet.getPrivateKeyString()}
-  Address:      ${wallet.getAddressString()}
+  OWNER_ACCOUNT_ADDRESS="${wallet.getAddressString()}"
+  OWNER_ACCOUNT_PRIVATE_KEY="${wallet.getPrivateKeyString()}"
 `);

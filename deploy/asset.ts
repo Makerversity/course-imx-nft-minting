@@ -11,20 +11,17 @@ async function main() {
         throw new Error("please pass --network");
     }
 
-    const owner = getEnv("CONTRACT_OWNER_ADDRESS");
+    const owner = getEnv("OWNER_ACCOUNT_ADDRESS");
     const name = getEnv("CONTRACT_NAME");
     const symbol = getEnv("CONTRACT_SYMBOL");
 
     const Asset = await ethers.getContractFactory("Asset");
     const imxAddress = getIMXAddress(hardhatArguments.network);
     const asset = await Asset.deploy(owner, name, symbol, imxAddress);
-    console.log("Deployed Contract Address:", asset.address);
-    console.log('Verifying contract in 5 minutes...');
-    await sleep(60000 * 5);
-    await run("verify:verify", {
-        address: asset.address,
-        constructorArguments: [owner, name, symbol, imxAddress],
-    });
+    console.log("\n\nDeployed successfully!!");
+    console.log("View on etherscan: https://goerli.etherscan.io/address/" + asset.address);
+    console.log("\nUpdate the following in your .env file");
+    console.log(`CONTRACT_ADDRESS=\"${asset.address}\"\n`);
 }
 
 main()

@@ -14,10 +14,11 @@ async function main() {
     const owner = getEnv("OWNER_ACCOUNT_ADDRESS");
     const name = getEnv("CONTRACT_NAME");
     const symbol = getEnv("CONTRACT_SYMBOL");
+    const baseUri = getEnv("CONTRACT_METADATA_URI");
 
     const Asset = await ethers.getContractFactory("Asset");
     const imxAddress = getIMXAddress(hardhatArguments.network);
-    const asset = await Asset.deploy(owner, name, symbol, imxAddress);
+    const asset = await Asset.deploy(owner, name, symbol, baseUri, imxAddress);
     console.log("\n\nDeployed successfully!!");
     console.log("View on etherscan: https://goerli.etherscan.io/address/" + asset.address);
     console.log("\nUpdate the following in your .env file");

@@ -14,15 +14,12 @@ const component = '[IMX-CREATE-COLLECTION]';
 
 (async (): Promise<void> => {
   const privateKey = requireEnvironmentVariable('OWNER_ACCOUNT_PRIVATE_KEY');
-  console.log(privateKey)
   const collectionContractAddress = requireEnvironmentVariable(
     'CONTRACT_ADDRESS',
   );
   const projectId = requireEnvironmentVariable('PROJECT_ID');
 
   const wallet = new Wallet(privateKey);
-  console.log(wallet.address)
-  console.log(await wallet.getAddress())
   const signer = wallet.connect(provider);
   const ownerPublicKey = wallet.publicKey;
 
@@ -43,7 +40,7 @@ const component = '[IMX-CREATE-COLLECTION]';
     collection_image_url: getEnv('COLLECTION_IMAGE_URL'),
     contract_address: collectionContractAddress,
     owner_public_key: ownerPublicKey,
-    // metadata_api_url: '',
+    metadata_api_url: getEnv('CONTRACT_METADATA_URI'),
     project_id: parseInt(projectId, 10),
   };
 

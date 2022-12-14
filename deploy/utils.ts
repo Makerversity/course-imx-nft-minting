@@ -4,6 +4,8 @@ export function getIMXAddress(network: string) {
             return '0x3e6e01355bB66925a65D372bf9c9f3835d9964fA';
         case 'sandbox':
             return '0x7917eDb51ecD6CdB3F9854c3cc593F33de10c623';
+        case 'goerli':
+            return '0x7917eDb51ecD6CdB3F9854c3cc593F33de10c623';
         case 'mainnet':
             return '0x5FDCCA53617f4d2b9134B29090C87D01058e27e9';
     }

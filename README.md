@@ -121,6 +121,10 @@ If you see a `replacement transaction underpriced` error message when trying to 
 
 Set the `TOKEN_ID` in the `.env` to the latest incremented index.
 
+This will mint a token on ImmutableX to the wallet address that you specify in the command. To view the NFT you will need to navigate to the [ImmutableX sandbox marketplace](https://market.sandbox.immutable.com/) and login with the wallet that you sent the NFT to. From there you will need to click my assets.
+
+It is worth noting that you can only send ImmutableX NFTs to wallets that are registered with ImmutableX. The wallet you used to do this tutorial was registered above.
+
 To mint:
 
 ```sh

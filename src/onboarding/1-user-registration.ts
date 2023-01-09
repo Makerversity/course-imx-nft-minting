@@ -16,7 +16,8 @@ const component = '[IMX-USER-REGISTRATION]';
   const privateKey = requireEnvironmentVariable('OWNER_ACCOUNT_PRIVATE_KEY');
 
   const user = await ImmutableXClient.build({
-    ...env.client,
+    ...
+    env.client,
     signer: new Wallet(privateKey).connect(provider),
   });
 

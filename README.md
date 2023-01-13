@@ -83,11 +83,13 @@ npm run user-registration
 
 ## 3. Create project
 
-Update the values in the `.env` file with the values of the project you want to create.
+**First you need to signup to [Immutable's developer hub](http://hub.immutable.com)**
+
+Then update the values in the `.env` file with the values of the project you want to create.
 
 - `PROJECT_NAME`
 - `PROJECT_COMPANY_NAME`
-- `PROJECT_EMAIL`
+- `PROJECT_EMAIL` (This must be the same email that you used above)
 
 Once updated, run the following script to create your project:
 

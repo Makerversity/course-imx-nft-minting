@@ -7,7 +7,7 @@ This document will get you up and running with a ERC-721 asset contract on IMX. 
 
 # Deploy your smart contract
 
-## 1. Install the dependancies 
+## 1. Install the dependencies 
 You will need npm and nodejs installed in order to complete this tutorial. If you haven't already you can learn about installing npm [here.](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
 ```sh
@@ -20,7 +20,7 @@ Make a copy of the `.env.example` file and rename the file to `.env`.
 cp .env.example .env
 ```
 ## 3. Setup your Ethereum account
-In order to complete this tutororial you will need a valid Ethereum account that consists of an `address` and `private key`. If you are not comfortable with using one of your existing accounts you can easily create one with the command below.
+In order to complete this tutorial you will need a valid Ethereum account that consists of an `address` and `private key`. If you are not comfortable with using one of your existing accounts you can easily create one with the command below.
 
 ```sh
 npm run generate-new-eth-account
@@ -58,7 +58,7 @@ To deploy your smart contract to the Goerli testnet you will need to add some Go
 Note: In order to receive Goerli Eth from this faucet you will need to login to the Alchemy account that you created in the previous step.
 
 ## 7. Deploy the contract
-Under the hood the comand below will use Hardhat to deploy an ImmutableX compatible ERC-721 contract to the Goerli testnet.
+Under the hood the command below will use Hardhat to deploy an ImmutableX compatible ERC-721 contract to the Goerli testnet.
 ```sh
 npm run deploy-contract
 ```
@@ -71,7 +71,7 @@ Copy the `Deployed Contract Address` contract address from the console from the 
 
 ## 2. Register as a user with Immutable X
 
-ImmutableX provide an authentication service to protect your administrative level assets from being accessed or updated by someone else. This is done using a simliar technique as described [here](https://link.medium.com/CVTcj7YfQkb).
+ImmutableX provide an authentication service to protect your administrative level assets from being accessed or updated by someone else. This is done using a similar technique as described [here](https://link.medium.com/CVTcj7YfQkb).
 
 In order to use services like creating a project or collection, you will first need to register as an ImmutableX user. This is done by setting up an account using the private key from the wallet account you would like to specify as the owner of the project.
 

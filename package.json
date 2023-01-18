@@ -41,5 +41,44 @@
     "tsconfig-paths": "^4.1.2",
     "typechain": "^8.1.1",
     "typescript": "^4.3.5"
+  },
+  "engines": {
+    "node": ">=14",
+    "npm": ">=8.3.0"
+  },
+  "overrides": {
+    "underscore": "1.13.4",
+    "solc": "0.8.17",
+    "ws@5.2.2": "5.2.3",
+    "tar": "4.4.19",
+    "simple-get": "2.8.2",
+    "request": {
+      "qs": "6.5.3"
+    },
+    "body-parser": {
+      "qs": "6.7.3"
+    },
+    "express": {
+      ".": "4.18.2",
+      "qs": "6.7.3"
+    },
+    "path-parse": "1.0.7",
+    "normalize-url": "4.5.1",
+    "node-fetch": "2.6.8",
+    "minimist": "1.2.7",
+    "minimatch": "3.1.2",
+    "mocha": {
+      "minimatch": "5.0.1"
+    },
+    "lodash": "4.17.21",
+    "babel-core": {
+      "json5": "1.0.2"
+    },
+    "json-schema": "0.4.0",
+    "got": "11.8.5",
+    "elliptic": "6.5.4",
+    "decode-uri-component": "0.2.2",
+    "cross-fetch": "2.2.6",
+    "async": "2.6.3"
   }
 }

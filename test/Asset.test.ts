@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
-import { Contract, Signer } from 'ethers';
+
 
 describe("Asset", function () {
 
@@ -14,7 +14,8 @@ describe("Asset", function () {
     const name = 'Gods Unchained';
     const symbol = 'GU';
     const imx = owner.address;
-    const mintable = await Asset.deploy(o, name, symbol, imx);
+    const baseUri = 'domain.example.com'
+    const mintable = await Asset.deploy(o, name, symbol, baseUri, imx);
 
     const tokenID = '123';
     const blueprint = '1000';
@@ -42,7 +43,8 @@ describe("Asset", function () {
     const name = 'Gods Unchained';
     const symbol = 'GU';
     const imx = owner.address;
-    const mintable = await Asset.deploy(o, name, symbol, imx);
+    const baseUri = 'domain.example.com'
+    const mintable = await Asset.deploy(o, name, symbol, baseUri, imx);
 
     const tokenID = '123';
     const blueprint = '';
@@ -66,8 +68,9 @@ describe("Asset", function () {
     const name = 'Gods Unchained';
     const symbol = 'GU';
     const imx = owner.address;
-    const mintable = await Asset.deploy(o, name, symbol, imx);
-
+    const baseUri = 'domain.example.com'
+    const mintable = await Asset.deploy(o, name, symbol, baseUri, imx);
+  
     const blob = toHex(`:`);
     await expect(mintable.mintFor(owner.address, 1, blob)).to.be.reverted;
 

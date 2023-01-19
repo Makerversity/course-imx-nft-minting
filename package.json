@@ -9,6 +9,7 @@
   "scripts": {
     "compile": "npx hardhat compile",
     "test": "npx hardhat test",
+    "copy-env": "shx cp -u .env.example .env",
     "generate-new-eth-account": "ts-node scripts/generateRandomKey.ts",
     "deploy-contract": "npx hardhat run deploy/asset.ts --network goerli",
     "user-registration": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/1-user-registration.ts",
@@ -18,7 +19,8 @@
     "mint": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/5-mint.ts"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.8.1"
+    "@openzeppelin/contracts": "^4.8.1",
+    "shx": "^0.3.4"
   },
   "devDependencies": {
     "@ethersproject/providers": "^5.0.14",

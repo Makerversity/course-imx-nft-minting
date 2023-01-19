@@ -16,9 +16,11 @@ npm install
 
 ## 2. Copy env file
 Make a copy of the `.env.example` file and rename the file to `.env`.
+
 ```sh
-cp .env.example .env
+npm run copy-env
 ```
+
 ## 3. Setup your Ethereum account
 In order to complete this tutorial you will need a valid Ethereum account that consists of an `address` and `private key`. If you are not comfortable with using one of your existing accounts you can easily create one with the command below.
 

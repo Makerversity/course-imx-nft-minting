@@ -23,18 +23,23 @@ async function main() {
     const Asset = await ethers.getContractFactory("Asset");
     const imxAddress = getIMXAddress(hardhatArguments.network);
     const asset = await Asset.deploy(owner, name, symbol, baseUri, imxAddress);
-    console.log("\n\nDeployed successfully!!");
+    console.log();
+    console.log("Deployed successfully!!");
     console.log("View on etherscan: https://goerli.etherscan.io/address/" + asset.address);
-
-    console.log(`\n\nVerifying the contract`);
+    console.log();
+    console.log(`Verifying the contract`);
     console.log(`(This may take a few minutes)`);
     await verifyContract(1, asset, owner, name, symbol, baseUri, imxAddress)
     console.log(`Contract verified`);
-
-    console.log("\nDeployed & verified successfully!!");
-    console.log("View on etherscan: https://goerli.etherscan.io/address/" + asset.address);
-    console.log("\nUpdate the following in your .env file");
-    console.log(`CONTRACT_ADDRESS=\"${asset.address}\"\n`);
+    console.log();
+    console.log();
+    console.log("Deployed successfully!!");
+    console.log(
+    "View on etherscan: https://goerli.etherscan.io/address/" + asset.address
+    );
+    console.log();
+    console.log("Update the following in your .env file:");
+    console.log(`CONTRACT_ADDRESS=${asset.address}`);
 }
 
 async function verifyContract(attempts: number, asset: Asset, owner: string, name: string, symbol: string, baseUri: string, imxAddress: string) {
@@ -62,8 +67,8 @@ async function verifyContract(attempts: number, asset: Asset, owner: string, nam
 }
 
 main()
-    .then(() => process.exit(0))
-    .catch((error) => {
-        console.error(error);
-        process.exit(1);
-    });
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

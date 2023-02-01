@@ -13,22 +13,7 @@ interface BulkMintScriptArgs {
 
 const provider = new AlchemyProvider(env.ethNetwork, env.alchemyApiKey);
 const log: ImLogger = new WinstonLogger(loggerConfig);
-const component = 'imx-bulk-mint-script';
-
-const waitForTransaction = async (promise: Promise<string>) => {
-  const txId = await promise;
-  log.info(component, 'Waiting for transaction', {
-    txId,
-    etherscanLink: `https://goerli.etherscan.io/tx/${txId}`,
-    alchemyLink: `https://dashboard.alchemyapi.io/mempool/eth-goerli/tx/${txId}`,
-  });
-  const receipt = await provider.waitForTransaction(txId);
-  if (receipt.status === 0) {
-    throw new Error('Transaction rejected');
-  }
-  log.info(component, `Transaction Mined: ${receipt.blockNumber}`);
-  return receipt;
-};
+const component = 'imx-mint-script';
 
 (async (): Promise<void> => {
   const { wallet } = parse<BulkMintScriptArgs>({
@@ -47,20 +32,6 @@ const waitForTransaction = async (promise: Promise<string>) => {
     ...env.client,
     signer: new Wallet(env.ownerAccountPrivateKey).connect(provider),
   });
-
-  log.info(component, 'MINTER REGISTRATION');
-  const registerImxResult = await minter.registerImx({
-    etherKey: minter.address.toLowerCase(),
-    starkPublicKey: minter.starkPublicKey,
-  });
-
-  if (registerImxResult.tx_hash === '') {
-    log.info(component, 'Minter registered, continuing...');
-  } else {
-    log.info(component, 'Waiting for minter registration...');
-    await waitForTransaction(Promise.resolve(registerImxResult.tx_hash));
-  }
-
 
   const token = {
     id: (tokenId).toString(),

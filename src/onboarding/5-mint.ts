@@ -52,6 +52,8 @@ const component = 'imx-mint-script';
 
   const result = await minter.mintV2(payload);
   console.log(result);
+
+  console.log(`You can view your NFT at https://market.sandbox.immutable.com/inventory/assets/${env.collectionContractAddress}/${tokenId}.`)
 })().catch(e => {
   log.error(component, e);
   process.exit(1);

@@ -137,6 +137,12 @@ npm run mint -- -w <TO_WALLET_ADDRESS>
 
 **-w** - _the wallet you wish to mint your NFTs to, e.g. the wallet you created and stored in `OWNER_ACCOUNT_ADDRESS` within .env_
 
+Once you've minted your asset you can view it on the ImmutableX Marketplace via:
+
+```
+https://market.sandbox.immutable.com/inventory/assets/{contractAddress}/{tokenId}
+```
+
 ---
 
 

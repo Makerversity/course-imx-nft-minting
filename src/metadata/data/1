@@ -1,0 +1,10 @@
+{
+  "name": "Ignis Emberstone",
+  "image_url": null,
+  "collectable": true,
+  "element": "fire",
+  "class": "mage",
+  "attack": 5,
+  "defense": 2,
+  "magic": 10
+}

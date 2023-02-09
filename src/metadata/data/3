@@ -1,0 +1,10 @@
+{
+  "name": "Willow Blossom",
+  "image_url": null,
+  "collectable": true,
+  "element": "earth",
+  "class": "druid",
+  "attack": 3,
+  "defense": 4,
+  "magic": 5
+}

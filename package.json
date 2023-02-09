@@ -15,11 +15,13 @@
     "user-registration": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/1-user-registration.ts",
     "create-project": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/2-create-project.ts",
     "create-collection": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/3-create-collection.ts",
-    "add-metadata-schema": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/4-add-metadata-schema.ts",
-    "mint": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/5-mint.ts"
+    "mint": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/onboarding/5-mint.ts",
+    "upload-metadata": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/metadata/1-upload-metadata.ts",
+    "add-metadata-schema": "ts-node -r tsconfig-paths/register -r dotenv/config ./src/metadata/4-add-metadata-schema.ts"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.8.1",
+    "nft.storage": "^7.0.0",
     "shx": "^0.3.4"
   },
   "devDependencies": {

@@ -145,8 +145,94 @@ https://market.sandbox.immutable.com/inventory/assets/{contractAddress}/{tokenId
 
 ---
 
+# NFT metadata
 
-# Common Errors
+## 1. Setup NFT.Storage API Key
+
+We will be leveraging NFT.Storage to upload our metadata to the IPFS but to do this first we will need to get an API Key.
+
+To get an API key from NFT.Storage you need to, [go to their site](https://nft.storage), sign in (or create an account if you don't have one) and select the "API Keys" menu item. Then click the "+ New Key" button and give a name to the API key you are creating. After that you'll see the newly created key in the list. Then add it to the `.env` file.
+- `NFT_STORAGE_TOKEN={API_KEY}`
+
+## 2. Upload the metadata
+
+Optionally before you upload the metadata feel free to edit it. The metadata for our collection in the directory `metadata/data`. Each file has a corresponding image in the `metadata/images` directory. You may edit these values but make sure you follow our naming convention otherwise you may need to edit our uploading script.
+
+We have a scrict in `metadata/1-upload-metadata` that uses `nft.storage` to deploy an our metadata to the IPFS.
+
+```sh
+npm run upload-metadata
+```
+On completion, the script will log the Gateway URL for the metadata uploaded to the IPFS. Save this as your `CONTRACT_METADATA_URI` in your .env file:
+- `CONTRACT_METADATA_URI={Gateway url}`
+
+## 3. Deploy a new contract and setup a collection
+
+Now we need to deploy a new smart contract and register it as a collection with ImmutableX. If you did the previous labs and you have already registered a project with ImmutableX and your .env value contains all the necessary values you can simply do the following:
+
+[Optional] Update the name and the symbol of the contract in the `.env` file before you deploy. 
+
+- `CONTRACT_NAME`
+- `CONTRACT_SYMBOL`
+
+```sh
+npm run deploy-contract
+```
+
+Copy the `Deployed Contract Address` contract address from the console from the previous step you completed and add it to the `.env`:
+- `CONTRACT_ADDRESS={CONTRACT_ADDRESS}`
+
+Update the values in the `.env` file with the values of the collection you want to create.
+
+- `COLLECTION_NAME`
+- `COLLECTION_DESCRIPTION`
+- `COLLECTION_ICON_URL`
+- `COLLECTION_IMAGE_URL`
+
+
+```sh
+npm run create-collection
+```
+
+If you have **not** setup your environment or registered with ImmutableX and setup a project you can follow these to go through the whole process:
+
+[Deploy your smart contract](#deploy-your-smart-contract)
+
+[Setup your Smart contract in IMX](#setup-your-smart-contract-in-imx)
+
+## 4. Add a metadata schema to the collection
+
+A metadata schema allows services to query and filter your ImmutableX collection by metadata values. If you updated the metadata before you uploaded it before you may want to edit the schema in `metadata/4-add-metadata-schema`. Otherwise you may run this command
+
+```sh
+npm run add-metadata-schema
+```
+
+## 5. Mint your NFT!
+
+Next, we will mint a token on ImmutableX to the wallet address that you specify in the command. To view the NFT you will need to navigate to the [ImmutableX sandbox marketplace](https://market.sandbox.immutable.com/) and login with the wallet that you sent the NFT to. From there you will need to click my assets.
+
+It is worth noting that you can only send ImmutableX NFTs to wallets that are registered with ImmutableX. The wallet you used to do this tutorial was registered above.
+
+Firstly, set the `TOKEN_ID` in the `.env` to the latest incremented index for your contract.
+
+Then to mint the token:
+
+```sh
+npm run mint -- -w <TO_WALLET_ADDRESS>
+```
+
+**-w** - _the wallet you wish to mint your NFTs to, e.g. the wallet you created and stored in `OWNER_ACCOUNT_ADDRESS` within .env_
+
+Once you've minted your asset you can view it on the ImmutableX Marketplace via:
+
+```
+https://market.sandbox.immutable.com/inventory/assets/{contractAddress}/{tokenId}
+```
+
+---
+
+## Common Errors
 ```
 Error: insufficient funds for intrinsic transaction cost [ See: https://links.ethers.org/v5-errors-INSUFFICIENT_FUNDS ] (error={"name":"ProviderError","code":-32000,"_isProviderError":true}, 
 ...
@@ -161,115 +247,3 @@ Error: insufficient funds for intrinsic transaction cost [ See: https://links.et
 ```
 
 If you see this you need to add more ETH to your wallet via the faucet.
-
-
-# ImmutableX Contracts
-
-## Installation: 
-
-```
-npm install @imtbl/imx-contracts
-```
-
-## Immutable Contract Addresses
-
-| Environment/Network       | Core (StarkEx Bridge) Contract                                                                                                | User Registration Contract                                                                                                    |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| **Sandbox (Goerli)**      | [0x7917edb51ecd6cdb3f9854c3cc593f33de10c623](https://goerli.etherscan.io/address/0x7917eDb51ecD6CdB3F9854c3cc593F33de10c623)  | [0x1c97ada273c9a52253f463042f29117090cd7d83](https://goerli.etherscan.io/address/0x1C97Ada273C9A52253f463042f29117090Cd7D83)  |
-| **Production (Mainnet)**  | [0x5fdcca53617f4d2b9134b29090c87d01058e27e9](https://etherscan.io/address/0x5FDCCA53617f4d2b9134B29090C87D01058e27e9)         | [0x72a06bf2a1CE5e39cBA06c0CAb824960B587d64c](https://etherscan.io/address/0x72a06bf2a1CE5e39cBA06c0CAb824960B587d64c)         |
-
-## Setup
-
-You will need an Ethereum wallet private key to deploy contracts. This can be your own private key or you can use the `scripts/generateRandomKey.ts` script to generate a new random Ethereum private key and address for use with this repo with the following command:
-
-```sh
-yarn generate-random-key
-```
-
-Also required are API keys for [Alchemy](https://www.alchemy.com/) and [Etherscan](https://etherscan.io/) to deploy contracts from this repo.
-
-1. Make a copy of the `.env.example` file and rename the file to `.env`.
-2. Add private keys and API keys to the `.env` file.
-
-**Note:** All the environment variables in `.env` need a value or hardhat will throw an error.
-
-# Layer 2 Minting
-
-ImmutableX is the only NFT scaling protocol that supports minting assets on Layer 2, and having those assets be trustlessly withdrawable to Ethereum Layer 1. To enable this, before you can mint on Layer 2, you need to deploy an IMX-compatible ERC721 contract as the potential Layer 1 home for these assets. Luckily, making an ERC721 contract IMX-compatible is easy!
-
-### No Code Usage (Test Environment Only)
-
-In the test environment, deploying an ERC721 contract which is compatible with ImmutableX is extremely easy. First, update the `.env` file, setting:
-
-- `OWNER_ACCOUNT_ADDRESS`
-- `CONTRACT_NAME`
-- `CONTRACT_SYMBOL`
-- `ETHERSCAN_API_KEY`
-  - which can be obtained from [your Etherscan account.](https://etherscan.io/myapikey)
-
-Then, just run `npx hardhat run deploy/asset.ts --network sandbox`.
-
-### Basic Usage
-
-If you're starting from scratch, simply deploy a new instance of `Asset.sol` and you'll have an L2-mintable ERC721 contract. Set the `_imx` parameter in the contract constructor to either the `Sandbox` or `Production` addresses as above.
-
-If you already have an ERC721 contract written, simply add `Mintable.sol` as an ancestor, implement the `_mintFor` function with your internal mint function, and set up the constructor as above:
-
-```
-import "@imtbl/imx-contracts/contracts/Mintable.sol";
-
-contract YourContract is Mintable {
-
-    constructor(address _imx) Mintable(_imx) {}
-
-    function _mintFor(
-        address to,
-        uint256 id,
-        bytes calldata blueprint
-    ) internal override {
-        // TODO: mint the token using your existing implementation
-    }
-
-}
-```
-
-### Advanced Usage
-
-To enable L2 minting, your contract must implement the `IMintable.sol` interface with a function which mints the corresponding L1 NFT. This function is `mintFor(address to, uint256 quantity, bytes mintingBlob)`. Note that this is a different function signature to `_mintFor` in the previous example. The "blueprint" is the immutable metadata set by the minting application at the time of asset creation. This blueprint can store the IPFS hash of the asset, or some of the asset's properties, or anything a minting application deems valuable. You can use a custom implementation of the `mintFor` function to do whatever you like with the blueprint.
-
-Your contract also needs to have an `owner()` function which returns an `address`. You must be able to sign a message with this address, which is used to link this contract your off-chain application (so you can authorise L2 mints). A simple way to do this is using the OpenZeppelin `Ownable` contract (`npm install @openzeppelin/contracts`).
-
-```
-import "@imtbl/imx-contracts/contracts/Mintable.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-
-contract YourContract is IMintable, Ownable {
-
-    function mintFor(
-        address to,
-        uint256 quantity,
-        bytes calldata mintingBlob
-    ) external override {
-        // TODO: make sure only ImmutableX can call this function
-        // TODO: mint the token!
-    }
-
-}
-```
-
-`Registration.sol` & `IMX.sol` is for reference purposes if you choose to offer these functions in your own smart contracts and is not required if you only want to deploy an ERC721.
-
-
-### Manually verifying registration contract
-
-First, deploy to sandbox as described in the [L2 Minting](#l2-minting) section. Change to mainnet if required.
-
-Verification with Etherscan should happen automatically within a few minutes of contract deployment, but if it fails you can run it manually, e.g.
-
-```
-npx hardhat verify --network <network> <address> <args used in deployment>
-```
-
-### Generating Typescript Types
-
-Run `npm run compile`. The output can be found in the `artifacts/typechain` folder.

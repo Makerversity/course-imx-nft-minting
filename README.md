@@ -5,6 +5,9 @@ This document will get you up and running with a ERC-721 asset contract on IMX. 
 2. Configure your smart contract on IMX
 3. Mint your tokens on IMX
 
+> **Note**
+> At various points throughout this lab you are asked to make changes to your `.env` file. Keep in mind after every such change you will need to save the file before running the next step.
+
 # Deploy your smart contract
 
 ## 1. Install the dependencies 

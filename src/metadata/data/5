@@ -1,0 +1,10 @@
+{
+  "name": "Zapira Glitterbeam",
+  "image_url": null,
+  "collectable": true,
+  "element": "energy",
+  "class": "fairy",
+  "attack": 1,
+  "defense": 5,
+  "magic": 9
+}

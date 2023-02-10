@@ -1,0 +1,10 @@
+{
+  "name": "Glacius Frostbite",
+  "image_url": null,
+  "collectable": true,
+  "element": "ice",
+  "class": "warrior",
+  "attack": 8,
+  "defense": 7,
+  "magic": 1
+}

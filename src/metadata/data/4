@@ -1,0 +1,10 @@
+{
+  "name": "Dex Shadowstalker",
+  "image_url": null,
+  "collectable": true,
+  "element": "dark",
+  "class": "thief",
+  "attack": 4,
+  "defense": 4,
+  "magic": 3
+}

@@ -31,7 +31,7 @@
     "@imtbl/imx-sdk": "^1.39.1",
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.5",
     "@nomiclabs/hardhat-ethers": "^2.2.2",
-    "@nomiclabs/hardhat-etherscan": "^3.1.5",
+    "@nomiclabs/hardhat-etherscan": "^3.1.6",
     "@typechain/ethers-v5": "^10.2.0",
     "@typechain/hardhat": "^6.1.5",
     "@types/chai": "^4.3.4",
@@ -40,7 +40,7 @@
     "dotenv": "^16.0.3",
     "ethereumjs-wallet": "^1.0.2",
     "ethers": "^5.0.0",
-    "hardhat": "^2.12.6",
+    "hardhat": "^2.12.7",
     "ts-command-line-args": "^2.3.1",
     "ts-node": "^10.8.1",
     "tsconfig-paths": "^4.1.2",
@@ -50,5 +50,8 @@
   "engines": {
     "node": ">=14",
     "npm": ">=8.3.0"
+  },
+  "overrides": {
+    "undici": "5.20.0"
   }
 }

@@ -182,6 +182,9 @@ npm run upload-metadata
 On completion, the script will log the Gateway URL for the metadata uploaded to the IPFS. Save this as your `CONTRACT_METADATA_URI` in your .env file:
 - `CONTRACT_METADATA_URI={Gateway url}`
 
+>**Note:** 
+>Note that the metadata files intentionally exclude the `.json` extension to ensure that the IPFS URI does not include the `.json` extension as well. This is because our tokens reference their metadata as `{CID}/{token_id}`
+
 ## 3. Deploy a new contract and setup a collection
 
 If you have **not** completed the previous lab and setup your environment and registered a project with ImmutableX you can follow these steps to go through the whole process:

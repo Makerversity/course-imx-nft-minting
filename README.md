@@ -8,10 +8,18 @@ This document will get you up and running with a ERC-721 asset contract on IMX. 
 > **Note**
 > At various points throughout this lab you are asked to make changes to your `.env` file. Keep in mind after every such change you will need to save the file before running the next step.
 
+# Requirements
+
+### Nodejs & npm
+You will need npm and nodejs installed in order to complete this tutorial. If you haven't already you can learn about installing npm [here.](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
+### Code editor
+To edit the code, you'll need an IDE, and we recommend using Visual Studio Code, which you can download by following the instructions provided [here.](https://code.visualstudio.com/)
+
 # Deploy your smart contract
 
 ## 1. Install the dependencies 
-You will need npm and nodejs installed in order to complete this tutorial. If you haven't already you can learn about installing npm [here.](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+Install of the dependencies that this lab needs to run.
 
 ```sh
 npm install
@@ -25,7 +33,7 @@ npm run copy-env
 ```
 
 ## 3. Setup your Ethereum account
-In order to complete this tutorial you will need a valid Ethereum account that consists of an `address` and `private key`. If you are not comfortable with using one of your existing accounts you can easily create one with the command below.
+In order to complete this tutorial you will need a valid Ethereum account that consists of an `address` and `private key`. If you are not comfortable with using one of your existing accounts you can easily create one with the command below. To ensure the security of your private key, it's crucial to store it using best practices such as utilizing a password-protected digital key wallet, keeping the key offline, backing up the key, and keeping it secret.
 
 ```sh
 npm run generate-new-eth-account
@@ -59,6 +67,11 @@ To deploy your smart contract to the Goerli testnet you will need to add some Go
 [https://goerlifaucet.com/](https://goerlifaucet.com/). 
 
 Note: In order to receive Goerli ETH from this faucet you will need to login to the Alchemy account that you created in the previous step.
+
+As demand for Goerli Eth can fluctuate, it's possible that the faucets may only be able to offer minimal amounts at times. Here are a couple of other faucets available that you can use instead:
+* https://goerli-faucet.pk910.de/ 
+* https://bigoerlifaucet.com/
+
 
 ## 7. Deploy the contract
 Under the hood the command below will use Hardhat to deploy an ImmutableX compatible ERC-721 contract to the Goerli testnet.
@@ -171,6 +184,12 @@ On completion, the script will log the Gateway URL for the metadata uploaded to 
 
 ## 3. Deploy a new contract and setup a collection
 
+If you have **not** completed the previous lab and setup your environment and registered a project with ImmutableX you can follow these steps to go through the whole process:
+
+[Deploy your smart contract](#deploy-your-smart-contract)
+
+[Setup your Smart contract in IMX](#setup-your-smart-contract-in-imx)
+
 Now we need to deploy a new smart contract and register it as a collection with ImmutableX. If you did the previous labs and you have already registered a project with ImmutableX and your .env value contains all the necessary values you can simply do the following:
 
 [Optional] Update the name and the symbol of the contract in the `.env` file before you deploy. 
@@ -196,12 +215,6 @@ Update the values in the `.env` file with the values of the collection you want 
 ```sh
 npm run create-collection
 ```
-
-If you have **not** setup your environment or registered with ImmutableX and setup a project you can follow these to go through the whole process:
-
-[Deploy your smart contract](#deploy-your-smart-contract)
-
-[Setup your Smart contract in IMX](#setup-your-smart-contract-in-imx)
 
 ## 4. Add a metadata schema to the collection
 

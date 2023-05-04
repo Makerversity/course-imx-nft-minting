@@ -145,6 +145,9 @@ It is worth noting that you can only send ImmutableX NFTs to wallets that are re
 
 Firstly, set the `TOKEN_ID` in the `.env` to the latest incremented index for your contract.
 
+**_(You will need to update this value for each consecutive mint so each token has a unique `TOKEN_ID`)_**
+
+
 Then to mint the token:
 
 ```sh
@@ -234,6 +237,9 @@ Next, we will mint a token on ImmutableX to the wallet address that you specify 
 It is worth noting that you can only send ImmutableX NFTs to wallets that are registered with ImmutableX. The wallet you used to do this tutorial was registered above.
 
 Firstly, set the `TOKEN_ID` in the `.env` to the latest incremented index for your contract.
+
+**_(You will need to update this value for each consecutive mint so each token has a unique `TOKEN_ID`)_**
+
 
 Then to mint the token:
 

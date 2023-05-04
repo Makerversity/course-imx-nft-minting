@@ -1,3 +1,6 @@
+import fs from 'fs';
+import dotenv from 'dotenv';
+
 export function wait(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -34,4 +37,27 @@ export function validateString<T extends string>(
     throw Error(`${val} is not one of ${validValues}`);
   }
   return val as T;
+}
+
+export function incrementTokenIdInEnv() {
+  // Load the .env file
+  const envConfig = dotenv.parse(fs.readFileSync('.env'));
+
+  // Update the environment variable
+  envConfig.TOKEN_ID = String(Number(envConfig.TOKEN_ID) + 1);
+
+  // Read the original .env file and keep the comments
+  const fileContent = fs.readFileSync('.env', 'utf8');
+  const newFileContent = fileContent.split('\n')
+    .map(line => {
+      const [key, value] = line.split('=');
+      if (envConfig.hasOwnProperty(key)) {
+        return `${key}=${envConfig[key]}`;
+      }
+      return line;
+    })
+    .join('\n');
+
+  // Write the updated configuration back to the .env file
+  fs.writeFileSync('.env', newFileContent);
 }

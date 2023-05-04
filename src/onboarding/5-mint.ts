@@ -6,6 +6,7 @@ import { parse } from 'ts-command-line-args';
 
 import env from '../config/client';
 import { loggerConfig } from '../config/logging';
+import { incrementTokenIdInEnv } from 'libs/utils';
 
 interface BulkMintScriptArgs {
   wallet: string;
@@ -49,7 +50,7 @@ const component = 'imx-mint-script';
       ],
     },
   ];
-
+  incrementTokenIdInEnv()
   const result = await minter.mintV2(payload);
   console.log(result);
 
